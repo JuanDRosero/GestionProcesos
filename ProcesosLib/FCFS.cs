@@ -22,17 +22,17 @@ namespace ProcesosLib
             var cond = procesos.Count == 0;
             switch (id)
             {
-                case 0:
+                case 1:
                     if (cond)
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Nottepad", Estado.Activo));
+                        procesos.Enqueue(new ProcesoCola(id, "Notepad", Estado.Activo));
                     }
                     else
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Nottepad", Estado.Espera));
+                        procesos.Enqueue(new ProcesoCola(id, "Notepad", Estado.Espera));
                     }
                     break;
-                case 1:
+                case 2:
                     if (cond)
                     {
                         procesos.Enqueue(new ProcesoCola(id, "Word", Estado.Activo));
@@ -43,7 +43,7 @@ namespace ProcesosLib
                     }
                     break;
 
-                case 2:
+                case 3:
                     if (cond)
                     {
                         procesos.Enqueue(new ProcesoCola(id, "Excel", Estado.Activo));
@@ -54,6 +54,37 @@ namespace ProcesosLib
                     }
                     break;
 
+                case 4:
+                    if (cond)
+                    {
+                        procesos.Enqueue(new ProcesoCola(id, "AutoCAD", Estado.Activo));
+                    }
+                    else
+                    {
+                        procesos.Enqueue(new ProcesoCola(id, "AutoCAD", Estado.Espera));
+                    }
+                    break;
+                case 5:
+                    if (cond)
+                    {
+                        procesos.Enqueue(new ProcesoCola(id, "Calculadora", Estado.Activo));
+                    }
+                    else
+                    {
+                        procesos.Enqueue(new ProcesoCola(id, "Calculadora", Estado.Espera));
+                    }
+                    break;
+
+                case 6:
+                    if (cond)
+                    {
+                        procesos.Enqueue(new ProcesoCola(id, "Windows Defender", Estado.Activo));
+                    }
+                    else
+                    {
+                        procesos.Enqueue(new ProcesoCola(id, "Windows Defender", Estado.Espera));
+                    }
+                    break;
                 default:
                     MessageBox.Show("No ha seleccionado un id valido","Error",
                         MessageBoxButtons.OK,MessageBoxIcon.Error);
