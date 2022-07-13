@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProcesosLib
 {
     internal class ProcesoCola: Proceso
     {
+        
         public ProcesoCola(int IDProceso, string nombre, Estado estado) : base(IDProceso, nombre)
         {
             switch (estado)
@@ -19,7 +21,8 @@ namespace ProcesosLib
                     Suspender();
                     break;
                 default:
-                    Console.WriteLine("No ha seleccionado un estado valido");
+                    MessageBox.Show("No ha seleccionado un estado valido", "Error",MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
                     break;
             }
         }
