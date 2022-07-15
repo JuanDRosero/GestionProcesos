@@ -10,12 +10,16 @@ namespace ProcesosLib
 {
     public class RoundRobin
     {
-        private Queue<ProcesoCola> procesos;
+        private List<ProcesoCola> procesos;
         private List<ProcesoCola> interrumpidos;
-        public RoundRobin()
+        private int quantum;
+        private int tRestante;
+        public RoundRobin(int quuantum=3)
         {
-            procesos = new Queue<ProcesoCola>();
+            procesos = new List<ProcesoCola>();
             interrumpidos = new List<ProcesoCola>();
+            this.quantum = quantum;
+            tRestante = quuantum;
         }
 
         public void agregarProceso(int id)  //Agregarle un bool por si se intenta agregar un elemento que ya existe
@@ -23,67 +27,70 @@ namespace ProcesosLib
             var cond = procesos.Count == 0;
             switch (id)
             {
+                case 0:
+                    procesos.Insert(0, new ProcesoCola(id, "Despachador", Estado.Activo));
+                    break;
                 case 1:
                     if (cond)
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Notepad", Estado.Activo));
+                        procesos.Add(new ProcesoCola(id, "Notepad", Estado.Activo));
                     }
                     else
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Notepad", Estado.Espera));
+                        procesos.Add(new ProcesoCola(id, "Notepad", Estado.Espera));
                     }
                     break;
                 case 2:
                     if (cond)
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Word", Estado.Activo));
+                        procesos.Add(new ProcesoCola(id, "Word", Estado.Activo));
                     }
                     else
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Word", Estado.Espera));
+                        procesos.Add(new ProcesoCola(id, "Word", Estado.Espera));
                     }
                     break;
 
                 case 3:
                     if (cond)
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Excel", Estado.Activo));
+                        procesos.Add(new ProcesoCola(id, "Excel", Estado.Activo));
                     }
                     else
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Excel", Estado.Espera));
+                        procesos.Add(new ProcesoCola(id, "Excel", Estado.Espera));
                     }
                     break;
 
                 case 4:
                     if (cond)
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "AutoCAD", Estado.Activo));
+                        procesos.Add(new ProcesoCola(id, "AutoCAD", Estado.Activo));
                     }
                     else
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "AutoCAD", Estado.Espera));
+                        procesos.Add(new ProcesoCola(id, "AutoCAD", Estado.Espera));
                     }
                     break;
                 case 5:
                     if (cond)
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Calculadora", Estado.Activo));
+                        procesos.Add(new ProcesoCola(id, "Calculadora", Estado.Activo));
                     }
                     else
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Calculadora", Estado.Espera));
+                        procesos.Add(new ProcesoCola(id, "Calculadora", Estado.Espera));
                     }
                     break;
 
                 case 6:
                     if (cond)
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Windows Defender", Estado.Activo));
+                        procesos.Add(new ProcesoCola(id, "Windows Defender", Estado.Activo));
                     }
                     else
                     {
-                        procesos.Enqueue(new ProcesoCola(id, "Windows Defender", Estado.Espera));
+                        procesos.Add(new ProcesoCola(id, "Windows Defender", Estado.Espera));
                     }
                     break;
                 default:
@@ -143,7 +150,20 @@ namespace ProcesosLib
 
         public void ejecutar()  //Esta función es la que se ejecuta en cada TICK
         {
+            if (procesos.Count!=0 && procesos.ElementAt(0).IDProceso==0)
+            {
+                procesos.RemoveAt(0);
+            }
 
+            if (tRestante == quantum)
+            {
+                agregarDes();
+                
+            }
+            else
+            {
+                tRestante++;
+            }
             foreach (var item in interrumpidos)     //Ejecuta los ticks de todos los procesos interrumpidos
             {
                 item.Tick();
@@ -152,20 +172,22 @@ namespace ProcesosLib
             {
                 item.Tick();
             }
-            if (procesos.Count != 0)
+            if (procesos.Count != 0 && procesos.ElementAt(0).IDProceso!=0)
             {
-                iniciarProceso(procesos.Peek().IDProceso);  //Le cede la CPU al primer elemento
+                iniciarProceso(procesos.ElementAt(0).IDProceso);  //Le cede la CPU al primer elemento
 
-                switch (procesos.Peek().Estado)
+                switch (procesos.ElementAt(0).Estado)
                 {
                     case Estado.Terminado:
-                        procesos.Dequeue();         //Termina el proceso actual si es que se solicitó
+                        procesos.RemoveAt(0);         //Termina el proceso actual si es que se solicitó
                         break;
                     case Estado.Interrumpido:
-                        interrumpidos.Add(procesos.Dequeue());  //Termina el proceso actual si es que se solicitó
+                        interrumpidos.Add(procesos.ElementAt(0));  //Termina el proceso actual si es que se solicitó
+                        procesos.RemoveAt(0);
+                        agregarDes();
                         break;
                 }
-
+            }
                 //Revisa si se reanudaron proceso
 
                 if (interrumpidos.Count != 0)
@@ -176,23 +198,27 @@ namespace ProcesosLib
                         if (item.Estado == Estado.Espera)
                         {
                             p = item;
-                            procesos.Enqueue(item);
+                            procesos.Add(item);
 
                         }
                     }
                     interrumpidos.Remove(p);
                 }
-            }
 
         }
         public string getProceso()
         {
             if (procesos.Count != 0)
             {
-                return procesos.Peek().Nombre;
+                return procesos.ElementAt(0).Nombre;
             }
             return "CPU Libre";
 
+        }
+        private void agregarDes()
+        {
+            agregarProceso(0);
+            tRestante = 0;
         }
     }
 }

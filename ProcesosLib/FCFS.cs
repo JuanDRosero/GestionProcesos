@@ -113,7 +113,7 @@ namespace ProcesosLib
         }
         private void iniciarProceso(int id)     //Activa el proceso
         {
-            foreach (var item in interrumpidos)
+            foreach (var item in procesos)
             {
                 if (item.IDProceso == id)
                 {
