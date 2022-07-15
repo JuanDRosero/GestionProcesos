@@ -14,12 +14,14 @@ namespace ProcesosLib
         private List<ProcesoCola> interrumpidos;
         private int quantum;
         private int tRestante;
-        public RoundRobin(int quuantum=3)
+        private int contador;
+        public RoundRobin(int quantum=3)
         {
             procesos = new List<ProcesoCola>();
             interrumpidos = new List<ProcesoCola>();
             this.quantum = quantum;
-            tRestante = quuantum;
+            tRestante = quantum;
+            contador = 0;
         }
 
         public void agregarProceso(int id)  //Agregarle un bool por si se intenta agregar un elemento que ya existe
@@ -121,7 +123,7 @@ namespace ProcesosLib
         }
         private void iniciarProceso(int id)     //Activa el proceso
         {
-            foreach (var item in interrumpidos)
+            foreach (var item in procesos)
             {
                 if (item.IDProceso == id)
                 {
@@ -150,44 +152,64 @@ namespace ProcesosLib
 
         public void ejecutar()  //Esta función es la que se ejecuta en cada TICK
         {
-            if (procesos.Count!=0 && procesos.ElementAt(0).IDProceso==0)
+            if (procesos.Count != 0 && procesos.ElementAt(0).IDProceso == 0)
             {
                 procesos.RemoveAt(0);
             }
 
             if (tRestante == quantum)
             {
+                if (procesos.Count != 0)
+                {
+                    var temp = procesos.ElementAt(0);
+                    procesos.Add(temp);
+                    procesos.RemoveAt(0);
+                }
                 agregarDes();
-                
             }
             else
             {
-                tRestante++;
-            }
-            foreach (var item in interrumpidos)     //Ejecuta los ticks de todos los procesos interrumpidos
-            {
-                item.Tick();
-            }
-            foreach (var item in procesos)          //Ejecuta todos los ticks de los procesos en espera
-            {
-                item.Tick();
-            }
-            if (procesos.Count != 0 && procesos.ElementAt(0).IDProceso!=0)
-            {
-                iniciarProceso(procesos.ElementAt(0).IDProceso);  //Le cede la CPU al primer elemento
-
-                switch (procesos.ElementAt(0).Estado)
+                foreach (var item in interrumpidos)     //Ejecuta los ticks de todos los procesos interrumpidos
                 {
-                    case Estado.Terminado:
-                        procesos.RemoveAt(0);         //Termina el proceso actual si es que se solicitó
-                        break;
-                    case Estado.Interrumpido:
-                        interrumpidos.Add(procesos.ElementAt(0));  //Termina el proceso actual si es que se solicitó
-                        procesos.RemoveAt(0);
-                        agregarDes();
-                        break;
+                    item.Tick();
                 }
-            }
+                foreach (var item in procesos)          //Ejecuta todos los ticks de los procesos en espera
+                {
+                    item.Tick();
+                }
+                if (procesos.Count != 0 && procesos.ElementAt(0).IDProceso != 0)
+                {
+                    iniciarProceso(procesos.ElementAt(0).IDProceso);  //Le cede la CPU al primer elemento
+                    procesos.ElementAt(0).Accion();
+
+                    switch (procesos.ElementAt(0).Estado)
+                    {
+                        case Estado.Terminado:
+                            procesos.RemoveAt(0);         //Termina el proceso actual si es que se solicitó
+                            break;
+                        case Estado.Interrumpido:
+                            interrumpidos.Add(procesos.ElementAt(0));  //Termina el proceso actual si es que se solicitó
+                            procesos.RemoveAt(0);
+                            agregarDes();
+                            break;
+                    }
+                }
+                //revisa si  hay procesos que se pueden agregar a interrumpidos
+                if (procesos.Count != 0)
+                {
+                    ProcesoCola p = null;
+                    foreach (var item in procesos)
+                    {
+                        if (item.Estado == Estado.Interrumpido)
+                        {
+                            p = item;
+                            interrumpidos.Add(p);
+                        }
+                    }
+                    procesos.Remove(p);
+                }
+
+
                 //Revisa si se reanudaron proceso
 
                 if (interrumpidos.Count != 0)
@@ -204,6 +226,9 @@ namespace ProcesosLib
                     }
                     interrumpidos.Remove(p);
                 }
+                tRestante++;
+                contador++;
+            }
 
         }
         public string getProceso()
@@ -219,6 +244,14 @@ namespace ProcesosLib
         {
             agregarProceso(0);
             tRestante = 0;
+            if (procesos.Count > 1)
+            {
+                foreach (var item in procesos)
+                {
+                    if (item.IDProceso != 0 && item.Accion != item.Interumpir && item.Accion != item.Terminar)
+                        item.Accion = item.Suspender;
+                }
+            }
         }
     }
 }
