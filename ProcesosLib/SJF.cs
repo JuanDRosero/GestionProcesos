@@ -138,7 +138,6 @@ namespace ProcesosLib
             {
                 item.Tick();
             }
-            procesos = procesos.OrderBy(x => x.tiempoTotal).ToList();   //Ordena la lista de procesos en orden ascendente
             if (procesos.Count != 0)
             {
                 iniciarProceso(procesos.ElementAt(0).IDProceso);
@@ -151,9 +150,11 @@ namespace ProcesosLib
                     case Estado.Interrumpido:
                         interrumpidos.Add(actual);
                         procesos.Remove(actual);
+                        procesos = procesos.OrderBy(x => x.tiempoTotal).ToList();   //Ordena la lista de procesos en orden ascendente
                         break;
                     case Estado.Terminado:
                         procesos.Remove(actual);
+                        procesos = procesos.OrderBy(x => x.tiempoTotal).ToList();   //Ordena la lista de procesos en orden ascendente
                         break;
                 }
                 if (procesos.Count > 0 && procesos.ElementAt(0).tiempoRestante <= 0)
