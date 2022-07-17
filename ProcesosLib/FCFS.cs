@@ -7,19 +7,21 @@ using System.Windows.Forms;
 
 namespace ProcesosLib
 {
-    public class FCFS
+    public class FCFS: Acciones
     {
         private Queue<ProcesoCola> procesos;
         private List<ProcesoCola> interrumpidos;
+        private List<ProcesoCola> procesosEliminar;
         public FCFS()
         {
             procesos = new Queue<ProcesoCola>();
             interrumpidos = new List<ProcesoCola>();
+            procesosEliminar= new List<ProcesoCola>();
         }
-
-        public void agregarProceso(int id)  //Agregarle un bool por si se intenta agregar un elemento que ya existe
+        public void AgregarProceso(params int[] valores)    //Agregarle un bool por si se intenta agregar un elemento que ya existe
         {
             var cond = procesos.Count == 0;
+            int id = valores[0];
             switch (id)
             {
                 case 1:
@@ -86,12 +88,13 @@ namespace ProcesosLib
                     }
                     break;
                 default:
-                    MessageBox.Show("No ha seleccionado un id valido","Error",
-                        MessageBoxButtons.OK,MessageBoxIcon.Error);
+                    MessageBox.Show("No ha seleccionado un id valido", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                     break;
             }
         }
-        public void interumpirProceso(int id)   //Interrumpe el procesos con el id suministrado (Si lo encuentra)
+
+        public void InterumpirProceso(int id)   //Interrumpe el procesos con el id suministrado (Si lo encuentra)
         {
             foreach (var item in procesos)
             {
@@ -101,7 +104,7 @@ namespace ProcesosLib
                 }
             }
         }
-        public void reanudarProceos(int id) //El proceso pasa de estar interrumpido a pausa (Si lo encuentra)
+        public void ReanudarProceso(int id) //El proceso pasa de estar interrumpido a pausa (Si lo encuentra)
         {
             foreach (var item in interrumpidos)
             {
@@ -111,7 +114,7 @@ namespace ProcesosLib
                 }
             }
         }
-        private void iniciarProceso(int id)     //Activa el proceso
+        private void IniciarProceso(int id)     //Activa el proceso
         {
             foreach (var item in procesos)
             {
@@ -121,7 +124,7 @@ namespace ProcesosLib
                 }
             }
         }
-        public void terminarProceso(int id) 
+        public void TerminarProceso(int id) 
         {
             if (procesos.Where(x => x.IDProceso == id).ToList().Count == 1) //Busca el proceso en la cola de espera
             {
@@ -140,7 +143,7 @@ namespace ProcesosLib
             }
         }
 
-        public void ejecutar()  //Esta función es la que se ejecuta en cada TICK
+        public void Ejecutar()  //Esta función es la que se ejecuta en cada TICK
         {
 
             foreach (var item in interrumpidos)     //Ejecuta los ticks de todos los procesos interrumpidos
@@ -151,9 +154,25 @@ namespace ProcesosLib
             {
                 item.Tick();
             }
+            //Revisa si se reanudaron proceso
+
+            if (interrumpidos.Count != 0)
+            {
+                foreach (var item in interrumpidos)
+                {
+                    if (item.Estado == Estado.Espera)
+                    {
+                        procesosEliminar.Add(item);
+                        procesos.Enqueue(item);
+
+                    }
+                }
+                procesosEliminar.ForEach(x => interrumpidos.Remove(x));
+                procesosEliminar.Clear();
+            }
             if (procesos.Count != 0)                
             {
-                iniciarProceso(procesos.Peek().IDProceso);  //Le cede la CPU al primer elemento
+                IniciarProceso(procesos.Peek().IDProceso);  //Le cede la CPU al primer elemento
 
                 switch (procesos.Peek().Estado)
                 {
@@ -165,26 +184,10 @@ namespace ProcesosLib
                         break;
                 }
 
-                //Revisa si se reanudaron proceso
-
-                if (interrumpidos.Count != 0)
-                {
-                    ProcesoCola p = null;
-                    foreach (var item in interrumpidos)
-                    {
-                        if (item.Estado == Estado.Espera)
-                        {
-                            p = item;
-                            procesos.Enqueue(item);
-
-                        }
-                    }
-                    interrumpidos.Remove(p);
-                }
             }
 
         }
-        public string getProceso()
+        public string GetProceso()      
         {
             if (procesos.Count != 0)
             {

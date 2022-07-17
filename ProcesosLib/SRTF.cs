@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProcesosLib
 {
-    public class SRTF
+    public class SRTF: Acciones
     {
         private List<ProcesoTiempo> procesos;
         private List<ProcesoTiempo> interrumpidos;
@@ -19,75 +19,76 @@ namespace ProcesosLib
             procesosEliminar = new List<ProcesoTiempo>();
         }
 
-        public void agregarProceso(int id, int tiempoInicio, int tiempoFin)
+        public void AgregarProceso(params int[] valores )
         {
             var cond = procesos.Count == 0;
+            int id = valores[0];
             switch (id)
             {
                 case 1:
                     if (cond)
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Notepad", tiempoInicio, tiempoFin, Estado.Activo));
+                        procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Activo));
                     }
                     else
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Notepad", tiempoInicio, tiempoFin, Estado.Espera));
+                        procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Espera));
                     }
                     break;
                 case 2:
                     if (cond)
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Word", tiempoInicio, tiempoFin, Estado.Activo));
+                        procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Activo));
                     }
                     else
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Word", tiempoInicio, tiempoFin, Estado.Espera));
+                        procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Espera));
                     }
                     break;
                 case 3:
                     if (cond)
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Excel", tiempoInicio, tiempoFin, Estado.Activo));
+                        procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Activo));
                     }
                     else
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Excel", tiempoInicio, tiempoFin, Estado.Espera));
+                        procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Espera));
                     }
                     break;
                 case 4:
                     if (cond)
                     {
-                        procesos.Add(new ProcesoTiempo(id, "AutoCAD", tiempoInicio, tiempoFin, Estado.Activo));
+                        procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Activo));
                     }
                     else
                     {
-                        procesos.Add(new ProcesoTiempo(id, "AutoCAD", tiempoInicio, tiempoFin, Estado.Espera));
+                        procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Espera));
                     }
                     break;
                 case 5:
                     if (cond)
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Calculadora", tiempoInicio, tiempoFin, Estado.Activo));
+                        procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Activo));
                     }
                     else
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Calculadora", tiempoInicio, tiempoFin, Estado.Espera));
+                        procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Espera));
                     }
                     break;
                 case 6:
                     if (cond)
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Windows Defender", tiempoInicio, tiempoFin, Estado.Activo));
+                        procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Activo));
                     }
                     else
                     {
-                        procesos.Add(new ProcesoTiempo(id, "Windows Defender", tiempoInicio, tiempoFin, Estado.Espera));
+                        procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Espera));
                     }
                     break;
             }
         }
 
-        public void interumpirProceso(int id)   //Interrumpe el procesoss con el id suministrado (Si lo encuentra)
+        public void InterumpirProceso(int id)   //Interrumpe el procesoss con el id suministrado (Si lo encuentra)
         {
             foreach (var item in procesos)
             {
@@ -97,7 +98,7 @@ namespace ProcesosLib
                 }
             }
         }
-        public void reanudarProceos(int id) //El proceso pasa de estar interrumpido a pausa (Si lo encuentra)
+        public void ReanudarProceso(int id) //El proceso pasa de estar interrumpido a pausa (Si lo encuentra)
         {
             foreach (var item in interrumpidos)
             {
@@ -107,7 +108,7 @@ namespace ProcesosLib
                 }
             }
         }
-        private void iniciarProceso(int id)     //Activa el proceso
+        private void IniciarProceso(int id)     //Activa el proceso
         {
             foreach (var item in procesos)
             {
@@ -117,7 +118,7 @@ namespace ProcesosLib
                 }
             }
         }
-        public void terminarProceso(int id)
+        public void TerminarProceso(int id)
         {
             foreach (var item in procesos)
             {
@@ -127,7 +128,7 @@ namespace ProcesosLib
                 }
             }
         }
-        public void ejecutar()
+        public void Ejecutar()
         {
 
             foreach (var item in interrumpidos)     //Ejecuta los ticks de todos los procesos interrumpidos
@@ -138,9 +139,24 @@ namespace ProcesosLib
             {
                 item.Tick();
             }
+            if (interrumpidos.Count != 0)   //Revisa si se retomaron procesos interumpidos
+            {
+
+                foreach (var item in interrumpidos)
+                {
+                    if (item.Estado == Estado.Espera)
+                    {
+                        procesosEliminar.Add(item);
+                        procesos.Add(item);
+
+                    }
+                }
+                procesosEliminar.ForEach(x => interrumpidos.Remove(x));
+                procesosEliminar.Clear();
+            }
             if (procesos.Count != 0)
             {
-                iniciarProceso(procesos.ElementAt(0).IDProceso);
+                IniciarProceso(procesos.ElementAt(0).IDProceso);
                 var actual = procesos.ElementAt(0);
                 switch (actual.Estado)
                 {
@@ -159,27 +175,13 @@ namespace ProcesosLib
                 }
                 if (procesos.Count > 0 && procesos.ElementAt(0).tiempoRestante <= 0)
                 {
-                    terminarProceso(procesos.ElementAt(0).IDProceso);
+                    TerminarProceso(procesos.ElementAt(0).IDProceso);
                 }
             }
-            if (interrumpidos.Count != 0)   //Revisa si se retomaron procesos interumpidos
-            {
-
-                foreach (var item in interrumpidos)
-                {
-                    if (item.Estado == Estado.Espera)
-                    {
-                        procesosEliminar.Add(item);
-                        procesos.Add(item);
-
-                    }
-                }
-                procesosEliminar.ForEach(x => interrumpidos.Remove(x));
-                procesosEliminar.Clear();
-            }
+            
         }
 
-        public string getProceso()
+        public string GetProceso()
         {
             if (procesos.Count != 0 && procesos.ElementAt(0).Estado == Estado.Activo)
             {
