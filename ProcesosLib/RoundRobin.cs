@@ -240,5 +240,10 @@ namespace ProcesosLib
                 }
             }
         }
+        public Dictionary<string, Estado> GetProcesos()
+        {
+            return procesos.Union(interrumpidos).ToDictionary(p => p.Nombre, p => p.Estado);
+
+        }
     }
 }

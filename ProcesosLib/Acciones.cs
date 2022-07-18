@@ -14,5 +14,6 @@ namespace ProcesosLib
         public void TerminarProceso(int id);
         public void Ejecutar();
         public string GetProceso();
+        public Dictionary<string, Estado> GetProcesos();
     }
 }

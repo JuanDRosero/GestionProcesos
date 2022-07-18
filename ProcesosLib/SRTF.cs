@@ -190,5 +190,10 @@ namespace ProcesosLib
             return "CPU Libre";
 
         }
+        public Dictionary<string, Estado> GetProcesos()
+        {
+            return procesos.Union(interrumpidos).ToDictionary(p => p.Nombre, p => p.Estado);
+
+        }
     }
 }
