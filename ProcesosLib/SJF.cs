@@ -23,69 +23,83 @@ namespace ProcesosLib
         {
             var cond = procesos.Count == 0;
             int id = valores[0];
-            switch (id)
+            var cond2 = procesos.Union(interrumpidos).Where(x => x.IDProceso == id).Count() == 0;
+            if (cond2)
             {
-                case 1:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Espera));
-                    }
-                    break;
-                case 2:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Espera));
-                    }
-                    break;
-                case 3:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Espera));
-                    }
-                    break;
-                case 4:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Espera));
-                    }
-                    break;
-                case 5:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Espera));
-                    }
-                    break;
-                case 6:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Espera));
-                    }
-                    break;
+                switch (id)
+                {
+                    case 1:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Espera));
+                        }
+                        break;
+                    case 2:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Espera));
+                        }
+                        break;
+                    case 3:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Espera));
+                        }
+                        break;
+                    case 4:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Espera));
+                        }
+                        break;
+                    case 5:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Espera));
+                        }
+                        break;
+                    case 6:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Espera));
+                        }
+                        break;
+                    default:
+                        MessageBox.Show("No ha seleccionado un id valido", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
             }
+            else
+            {
+                MessageBox.Show("El proceso ya se encuentra agregado", "Error",
+                           MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
 
         public void InterumpirProceso(int id)   //Interrumpe el procesoss con el id suministrado (Si lo encuentra)

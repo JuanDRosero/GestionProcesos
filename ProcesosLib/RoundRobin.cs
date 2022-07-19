@@ -30,79 +30,89 @@ namespace ProcesosLib
         {
             var cond = procesos.Count == 0;
             int id = valores[0];
-            switch (id)
+            var cond2 = procesos.Union(interrumpidos).Where(x => x.IDProceso == id).Count() == 0;
+            if (cond2)
             {
-                case 0:
-                    procesos.Insert(0, new ProcesoCola(id, "Despachador", Estado.Activo));
-                    break;
-                case 1:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoCola(id, "Notepad", Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoCola(id, "Notepad", Estado.Espera));
-                    }
-                    break;
-                case 2:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoCola(id, "Word", Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoCola(id, "Word", Estado.Espera));
-                    }
-                    break;
+                switch (id)
+                {
+                    case 0:
+                        procesos.Insert(0, new ProcesoCola(id, "Despachador", Estado.Activo));
+                        break;
+                    case 1:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoCola(id, "Notepad", Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoCola(id, "Notepad", Estado.Espera));
+                        }
+                        break;
+                    case 2:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoCola(id, "Word", Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoCola(id, "Word", Estado.Espera));
+                        }
+                        break;
 
-                case 3:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoCola(id, "Excel", Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoCola(id, "Excel", Estado.Espera));
-                    }
-                    break;
+                    case 3:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoCola(id, "Excel", Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoCola(id, "Excel", Estado.Espera));
+                        }
+                        break;
 
-                case 4:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoCola(id, "AutoCAD", Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoCola(id, "AutoCAD", Estado.Espera));
-                    }
-                    break;
-                case 5:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoCola(id, "Calculadora", Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoCola(id, "Calculadora", Estado.Espera));
-                    }
-                    break;
+                    case 4:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoCola(id, "AutoCAD", Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoCola(id, "AutoCAD", Estado.Espera));
+                        }
+                        break;
+                    case 5:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoCola(id, "Calculadora", Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoCola(id, "Calculadora", Estado.Espera));
+                        }
+                        break;
 
-                case 6:
-                    if (cond)
-                    {
-                        procesos.Add(new ProcesoCola(id, "Windows Defender", Estado.Activo));
-                    }
-                    else
-                    {
-                        procesos.Add(new ProcesoCola(id, "Windows Defender", Estado.Espera));
-                    }
-                    break;
-                default:
-                    MessageBox.Show("No ha seleccionado un id valido", "Error",
-                        MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    break;
+                    case 6:
+                        if (cond)
+                        {
+                            procesos.Add(new ProcesoCola(id, "Windows Defender", Estado.Activo));
+                        }
+                        else
+                        {
+                            procesos.Add(new ProcesoCola(id, "Windows Defender", Estado.Espera));
+                        }
+                        break;
+                    default:
+                        MessageBox.Show("No ha seleccionado un id valido", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        break;
+                }
             }
+            else
+            {
+                MessageBox.Show("El proceso ya se encuentra agregado", "Error",
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
         public void InterumpirProceso(int id)   //Interrumpe el procesos con el id suministrado (Si lo encuentra)
         {
