@@ -118,7 +118,7 @@ namespace ProcesosLib
         {
             foreach (var item in procesos)
             {
-                if (item.IDProceso == id)
+                if (item.IDProceso == id )
                 {
                     item.Accion = item.Reanudar;
                 }

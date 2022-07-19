@@ -30,7 +30,7 @@
         }
         public void Reanudar()
         {
-            if (Estado == Estado.Interrumpido || Estado==Estado.Espera)
+            if ( Estado==Estado.Espera)
                 Estado = Estado.Activo;
         }
         public void Suspender()
