@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ProcesosLib
 {
-    public class RoundRobin: Acciones
+    public class RoundRobin: IAcciones
     {
         private List<ProcesoCola> procesos;
         private List<ProcesoCola> interrumpidos;

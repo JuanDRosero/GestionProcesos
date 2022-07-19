@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ProcesosLib
 {
-    public class FCFS: Acciones
+    public class FCFS: IAcciones
     {
         private Queue<ProcesoCola> procesos;
         private List<ProcesoCola> interrumpidos;

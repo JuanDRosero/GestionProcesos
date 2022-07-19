@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProcesosLib
 {
-    public class SRTF: Acciones
+    public class SRTF: IAcciones
     {
         private List<ProcesoTiempo> procesos;
         private List<ProcesoTiempo> interrumpidos;
