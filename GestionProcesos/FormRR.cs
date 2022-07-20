@@ -15,7 +15,7 @@ namespace GestionProcesos
     {
         private Graphics myGraphics;
         int x = 0;
-        private IAcciones alg = new FCFS();
+        private IAcciones alg = new RoundRobin();
         private Form padre;
         public FormRR(Form padre)
         {
