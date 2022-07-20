@@ -135,5 +135,120 @@ namespace GestionProcesos
         {
             padre.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int valor = Int32.Parse(Interaction.InputBox("Inserte la duración: ", "Inserte valor: "));
+                if (valor <= 1)
+                {
+                    throw new Exception("Valor no valido");
+                }
+                alg.AgregarProceso(2, valor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Valor no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int valor = Int32.Parse(Interaction.InputBox("Inserte la duración: ", "Inserte valor: "));
+                if (valor <= 1)
+                {
+                    throw new Exception("Valor no valido");
+                }
+                alg.AgregarProceso(3, valor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Valor no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int valor = Int32.Parse(Interaction.InputBox("Inserte la duración: ", "Inserte valor: "));
+                if (valor <= 1)
+                {
+                    throw new Exception("Valor no valido");
+                }
+                alg.AgregarProceso(4, valor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Valor no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int valor = Int32.Parse(Interaction.InputBox("Inserte la duración: ", "Inserte valor: "));
+                if (valor <= 1)
+                {
+                    throw new Exception("Valor no valido");
+                }
+                alg.AgregarProceso(5, valor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Valor no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int valor = Int32.Parse(Interaction.InputBox("Inserte la duración: ", "Inserte valor: "));
+                if (valor <= 1)
+                {
+                    throw new Exception("Valor no valido");
+                }
+                alg.AgregarProceso(6, valor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Valor no valido", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(1);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(2);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(3);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(4);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(5);
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(6);
+        }
     }
 }
