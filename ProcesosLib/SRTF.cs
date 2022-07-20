@@ -31,61 +31,61 @@ namespace ProcesosLib
                     case 1:
                         if (cond)
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Activo));
+                            procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], Estado.Activo));
                         }
                         else
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1], valores[2], Estado.Espera));
+                            procesos.Add(new ProcesoTiempo(id, "Notepad", valores[1],  Estado.Espera));
                         }
                         break;
                     case 2:
                         if (cond)
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Activo));
+                            procesos.Add(new ProcesoTiempo(id, "Word", valores[1],  Estado.Activo));
                         }
                         else
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Word", valores[1], valores[2], Estado.Espera));
+                            procesos.Add(new ProcesoTiempo(id, "Word", valores[1],  Estado.Espera));
                         }
                         break;
                     case 3:
                         if (cond)
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Activo));
+                            procesos.Add(new ProcesoTiempo(id, "Excel", valores[1],  Estado.Activo));
                         }
                         else
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Excel", valores[1], valores[2], Estado.Espera));
+                            procesos.Add(new ProcesoTiempo(id, "Excel", valores[1],  Estado.Espera));
                         }
                         break;
                     case 4:
                         if (cond)
                         {
-                            procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Activo));
+                            procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1],  Estado.Activo));
                         }
                         else
                         {
-                            procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1], valores[2], Estado.Espera));
+                            procesos.Add(new ProcesoTiempo(id, "AutoCAD", valores[1],  Estado.Espera));
                         }
                         break;
                     case 5:
                         if (cond)
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Activo));
+                            procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1],  Estado.Activo));
                         }
                         else
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1], valores[2], Estado.Espera));
+                            procesos.Add(new ProcesoTiempo(id, "Calculadora", valores[1],  Estado.Espera));
                         }
                         break;
                     case 6:
                         if (cond)
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Activo));
+                            procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1],  Estado.Activo));
                         }
                         else
                         {
-                            procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1], valores[2], Estado.Espera));
+                            procesos.Add(new ProcesoTiempo(id, "Windows Defender", valores[1],  Estado.Espera));
                         }
                         break;
                     default:

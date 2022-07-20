@@ -28,8 +28,21 @@ namespace GestionProcesos
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //int valor = Int32.Parse(Interaction.InputBox("Inserte la duración: ","Inserte valor: "));
-            alg.AgregarProceso(1);
+            try
+            {
+                int valor = Int32.Parse(Interaction.InputBox("Inserte la duración: ", "Inserte valor: "));
+                if (valor<=1)
+                {
+                    throw new Exception("Valor no valido");
+                }
+                alg.AgregarProceso(1,valor);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Valor no valido", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            
+            
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
