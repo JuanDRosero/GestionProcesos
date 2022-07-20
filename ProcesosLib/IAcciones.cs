@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProcesosLib
 {
-    internal interface IAcciones
+    public interface IAcciones
     {
         public void AgregarProceso(params int[] valores);
         public void InterumpirProceso(int id);
