@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label13 = new System.Windows.Forms.Label();
             this.button16 = new System.Windows.Forms.Button();
@@ -60,6 +61,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // panel1
@@ -68,6 +70,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(913, 633);
             this.panel1.TabIndex = 70;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label13
             // 
@@ -369,6 +372,10 @@
             this.label2.TabIndex = 121;
             this.label2.Text = "Round Robin";
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // FormRR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -410,6 +417,7 @@
             this.Name = "FormRR";
             this.Text = "FormRR";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormRR_FormClosed);
+            this.Load += new System.EventHandler(this.FormRR_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -449,5 +457,6 @@
         private Label label3;
         private Label label1;
         private Label label2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
