@@ -40,9 +40,7 @@ namespace GestionProcesos
             catch (Exception ex)
             {
                 MessageBox.Show("Valor no valido", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
-            
-            
+            }  
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -55,7 +53,7 @@ namespace GestionProcesos
             //Lineas 
             for (int i = 0; i < 53; i++)
             {
-                e.Graphics.DrawLine(pen2, 30 + i * 15, 10, 30 + i * 15, 600);
+                e.Graphics.DrawLine(pen2, 20 + i * 15, 10, 20 + i * 15, 600);
             }
         }
 

@@ -42,7 +42,6 @@
             this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -54,12 +53,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -192,18 +185,6 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.label12.Location = new System.Drawing.Point(337, 193);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 20);
-            this.label12.TabIndex = 86;
-            this.label12.Text = "Tiempo";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -319,48 +300,6 @@
             this.label1.TabIndex = 71;
             this.label1.Text = "Laboratorio #3";
             // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(337, 220);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(62, 27);
-            this.textBox1.TabIndex = 106;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(337, 260);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(62, 27);
-            this.textBox2.TabIndex = 107;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(337, 336);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(62, 27);
-            this.textBox3.TabIndex = 109;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(337, 297);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(62, 27);
-            this.textBox4.TabIndex = 108;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(337, 421);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(62, 27);
-            this.textBox5.TabIndex = 111;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(337, 380);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(62, 27);
-            this.textBox6.TabIndex = 110;
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
@@ -382,14 +321,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1370, 675);
+            this.ClientSize = new System.Drawing.Size(1516, 674);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox5);
-            this.Controls.Add(this.textBox6);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.button17);
@@ -403,7 +336,6 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.button1);
@@ -438,7 +370,6 @@
         private Button button5;
         private Button button6;
         private Button button2;
-        private Label label12;
         private Label label11;
         private Label label10;
         private Button button1;
@@ -450,12 +381,6 @@
         private Label label4;
         private Label label3;
         private Label label1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
         private System.Windows.Forms.Timer timer1;
         private Label label2;
     }
