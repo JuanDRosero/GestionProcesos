@@ -20,12 +20,13 @@ namespace GestionProcesos
         public FormRR(Form padre)
         {
             InitializeComponent();
+            timer1.Start();
             this.padre = padre;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            alg.AgregarProceso(1);
         }
 
         private void FormRR_FormClosed(object sender, FormClosedEventArgs e)
@@ -128,6 +129,126 @@ namespace GestionProcesos
         private void FormRR_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            alg.AgregarProceso(2);
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            alg.AgregarProceso(3);
+        }
+
+        private void button12_Click(object sender, EventArgs e)
+        {
+            alg.AgregarProceso(4);
+        }
+
+        private void button15_Click(object sender, EventArgs e)
+        {
+            alg.AgregarProceso(5);
+        }
+
+        private void button18_Click(object sender, EventArgs e)
+        {
+            alg.AgregarProceso(6);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            alg.TerminarProceso(1);
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            alg.TerminarProceso(2);
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            alg.TerminarProceso(3);
+        }
+
+        private void button11_Click(object sender, EventArgs e)
+        {
+            alg.TerminarProceso(4);
+        }
+
+        private void button14_Click(object sender, EventArgs e)
+        {
+            alg.TerminarProceso(5);
+        }
+
+        private void button17_Click(object sender, EventArgs e)
+        {
+            alg.TerminarProceso(6);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(1);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(2);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(3);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(4);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(5);
+        }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            alg.InterumpirProceso(6);
+        }
+
+        private void label14_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(1);
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(2);
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(3);
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(4);
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(5);
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(6);
         }
     }
 }
