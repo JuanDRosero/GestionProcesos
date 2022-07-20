@@ -55,11 +55,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.label2 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(591, 12);
+            this.panel1.Location = new System.Drawing.Point(637, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(913, 633);
             this.panel1.TabIndex = 105;
@@ -316,12 +322,72 @@
             this.label2.TabIndex = 120;
             this.label2.Text = "Shortest Job First";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(553, 569);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(66, 20);
+            this.label12.TabIndex = 121;
+            this.label12.Text = "NotePad";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(574, 496);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(45, 20);
+            this.label14.TabIndex = 122;
+            this.label14.Text = "Word";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(576, 423);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(43, 20);
+            this.label15.TabIndex = 123;
+            this.label15.Text = "Excel";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(548, 350);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(71, 20);
+            this.label16.TabIndex = 124;
+            this.label16.Text = "AutoCAD";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(531, 277);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(88, 20);
+            this.label17.TabIndex = 125;
+            this.label17.Text = "Calculadora";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(483, 204);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(136, 20);
+            this.label18.TabIndex = 126;
+            this.label18.Text = "Windows Defender";
+            // 
             // FormSJF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1516, 674);
+            this.ClientSize = new System.Drawing.Size(1567, 674);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
+            this.Controls.Add(this.label15);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label13);
@@ -383,5 +449,11 @@
         private Label label1;
         private System.Windows.Forms.Timer timer1;
         private Label label2;
+        private Label label12;
+        private Label label14;
+        private Label label15;
+        private Label label16;
+        private Label label17;
+        private Label label18;
     }
 }
