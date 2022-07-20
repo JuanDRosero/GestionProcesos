@@ -51,10 +51,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblRR = new System.Windows.Forms.LinkLabel();
-            this.lblSRTF = new System.Windows.Forms.LinkLabel();
-            this.lblSJF = new System.Windows.Forms.LinkLabel();
-            this.lblFCFS = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -63,11 +59,12 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(426, 12);
+            this.panel1.Location = new System.Drawing.Point(591, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(913, 633);
             this.panel1.TabIndex = 105;
@@ -78,9 +75,9 @@
             this.label13.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label13.Location = new System.Drawing.Point(26, 55);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(141, 31);
+            this.label13.Size = new System.Drawing.Size(131, 31);
             this.label13.TabIndex = 104;
-            this.label13.Text = "Algoritmos:";
+            this.label13.Text = "Algoritmo:";
             // 
             // button17
             // 
@@ -213,6 +210,7 @@
             this.button1.Size = new System.Drawing.Size(62, 28);
             this.button1.TabIndex = 83;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label9
             // 
@@ -284,51 +282,6 @@
             this.label3.TabIndex = 76;
             this.label3.Text = "Procesos:";
             // 
-            // lblRR
-            // 
-            this.lblRR.AutoSize = true;
-            this.lblRR.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblRR.Location = new System.Drawing.Point(95, 142);
-            this.lblRR.Name = "lblRR";
-            this.lblRR.Size = new System.Drawing.Size(30, 23);
-            this.lblRR.TabIndex = 75;
-            this.lblRR.TabStop = true;
-            this.lblRR.Text = "RR";
-            // 
-            // lblSRTF
-            // 
-            this.lblSRTF.AutoSize = true;
-            this.lblSRTF.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSRTF.Location = new System.Drawing.Point(95, 101);
-            this.lblSRTF.Name = "lblSRTF";
-            this.lblSRTF.Size = new System.Drawing.Size(45, 23);
-            this.lblSRTF.TabIndex = 74;
-            this.lblSRTF.TabStop = true;
-            this.lblSRTF.Text = "SRTF";
-            // 
-            // lblSJF
-            // 
-            this.lblSJF.AutoSize = true;
-            this.lblSJF.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSJF.Location = new System.Drawing.Point(26, 142);
-            this.lblSJF.Name = "lblSJF";
-            this.lblSJF.Size = new System.Drawing.Size(33, 23);
-            this.lblSJF.TabIndex = 73;
-            this.lblSJF.TabStop = true;
-            this.lblSJF.Text = "SJF";
-            // 
-            // lblFCFS
-            // 
-            this.lblFCFS.AutoSize = true;
-            this.lblFCFS.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblFCFS.Location = new System.Drawing.Point(26, 101);
-            this.lblFCFS.Name = "lblFCFS";
-            this.lblFCFS.Size = new System.Drawing.Size(46, 23);
-            this.lblFCFS.TabIndex = 72;
-            this.lblFCFS.TabStop = true;
-            this.lblFCFS.Text = "FCFS";
-            this.lblFCFS.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblFCFS_LinkClicked);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -394,12 +347,23 @@
             this.label12.Text = "Tiempo";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(60, 111);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(455, 46);
+            this.label2.TabIndex = 119;
+            this.label2.Text = "Short Remaining Time First";
+            // 
             // FormSRTF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.ClientSize = new System.Drawing.Size(1358, 657);
+            this.ClientSize = new System.Drawing.Size(1516, 674);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox3);
@@ -430,13 +394,10 @@
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.lblRR);
-            this.Controls.Add(this.lblSRTF);
-            this.Controls.Add(this.lblSJF);
-            this.Controls.Add(this.lblFCFS);
             this.Controls.Add(this.label1);
             this.Name = "FormSRTF";
             this.Text = "FormSRTF";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormSRTF_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -467,10 +428,6 @@
         private Label label5;
         private Label label4;
         private Label label3;
-        private LinkLabel lblRR;
-        private LinkLabel lblSRTF;
-        private LinkLabel lblSJF;
-        private LinkLabel lblFCFS;
         private Label label1;
         private TextBox textBox5;
         private TextBox textBox6;
@@ -479,5 +436,6 @@
         private TextBox textBox2;
         private TextBox textBox1;
         private Label label12;
+        private Label label2;
     }
 }

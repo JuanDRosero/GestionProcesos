@@ -15,19 +15,13 @@ namespace GestionProcesos
     {
         private Graphics myGraphics;
         int x=0;
-        private FCFS alg = new FCFS();
-        Dictionary<string, int> dict = new Dictionary<string, int>();
-        
-        public FormFCFS()
+        private IAcciones alg = new FCFS();
+        private Form padre;
+        public FormFCFS(Form padre)
         {
             InitializeComponent();
             timer1.Start();
-            dict.Add("Notepad", 600 - 73 * 1);
-            dict.Add("Word", 600 - 73 * 2);
-            dict.Add("Excel", 600 - 73 * 3);
-            dict.Add("AutoCAD", 600 - 73 * 4);
-            dict.Add("Calculadora", 600 - 73 * 5);
-            dict.Add("Windows Defender", 600 - 73 * 6);
+            this.padre = padre;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -226,6 +220,41 @@ namespace GestionProcesos
         private void button16_Click(object sender, EventArgs e)
         {
             alg.InterumpirProceso(6);
+        }
+
+        private void button24_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(1);
+        }
+
+        private void button23_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(2);
+        }
+
+        private void button22_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(3);
+        }
+
+        private void button21_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(4);
+        }
+
+        private void button20_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(5);
+        }
+
+        private void button19_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(6);
+        }
+
+        private void FormFCFS_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            padre.Show();
         }
     }
 }
