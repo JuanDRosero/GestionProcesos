@@ -12,7 +12,9 @@ namespace ProcesosLib
         public int duracion { get; set; }      //Momento de finalizacion del proceso
         public ProcesoTiempo(int IDProceso, string nombre, int duracion, Estado estado) : base(IDProceso, nombre)
         {
+            this.duracion = duracion;
             this.tiempoRestante = duracion;
+
             switch (estado)
             {
                 case Estado.Activo:
