@@ -248,5 +248,35 @@ namespace GestionProcesos
         {
             alg.InterumpirProceso(6);
         }
+
+        private void button16_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(1);
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(2);
+        }
+
+        private void button10_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(3);
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(4);
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(5);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            alg.ReanudarProceso(6);
+        }
     }
 }
