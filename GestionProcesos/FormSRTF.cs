@@ -60,27 +60,27 @@ namespace GestionProcesos
                 switch (item.Key)
                 {
                     case "Notepad":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 1, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 73 * 1, 15, 61));
                         break;
 
                     case "Word":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 2, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 73 * 2, 15, 61));
                         break;
 
                     case "Excel":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 3, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 73 * 3, 15, 61));
                         break;
 
                     case "AutoCAD":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 4, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 73 * 4, 15, 61));
                         break;
 
                     case "Calculadora":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 5, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 73 * 5, 15, 61));
                         break;
 
                     case "Windows Defender":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 6, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 73 * 6, 15, 61));
                         break;
 
                     default:

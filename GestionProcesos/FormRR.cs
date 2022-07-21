@@ -83,31 +83,31 @@ namespace GestionProcesos
                 switch (item.Key)
                 {
                     case "Despachador":
-                        myGraphics.FillRectangle(myBrush2, new Rectangle(20 + x, 600 - 73 * 1, 15, 61));
+                        myGraphics.FillRectangle(myBrush2, new Rectangle(20 + x, panel1.Size.Height - 53 * 1, 15, 41));
                         break;
 
                     case "Notepad":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 2, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 53 * 2, 15, 41));
                         break;
 
                     case "Word":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 3, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 53 * 3, 15, 41));
                         break;
 
                     case "Excel":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 4, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 53 * 4, 15, 41));
                         break;
 
                     case "AutoCAD":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 5, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 53 * 5, 15, 41));
                         break;
 
                     case "Calculadora":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 6, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 53 * 6, 15, 41));
                         break;
 
                     case "Windows Defender":
-                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, 600 - 73 * 7, 15, 61));
+                        myGraphics.FillRectangle(myBrush, new Rectangle(20 + x, panel1.Size.Height - 53 * 7, 15, 41));
                         break;
 
                     default:
@@ -249,6 +249,11 @@ namespace GestionProcesos
         private void button23_Click(object sender, EventArgs e)
         {
             alg.ReanudarProceso(6);
+        }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
